@@ -1,0 +1,5 @@
+{
+  "testFiles": "*.test.js",
+  "integrationFolder": "__tests__/",
+  "baseUrl": "http://localhost:3000"
+}

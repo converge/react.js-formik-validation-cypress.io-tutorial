@@ -1,29 +1,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 320px 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   height: 100vh;
-}
-
-.login-box {
-  height: 50vh;
-  grid-column: 2;
-  grid-row: 2;
-}
-
-.login-box input {
-  height: 25px;
-  border-radius: 20px;
-  border: 0;
-  margin: 5px;
-  padding: 10px;
-  background-color: #fef1fa;
-}
-
-.field-validation {
-  margin: 10px 0 0 5px;
-  color: #8374e2;
-  font-weight: 600;
-  font-size: 1.3rem;
 }

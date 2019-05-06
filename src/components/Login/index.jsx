@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-const api = null
+import './style.css'
 
 export default class Login extends Component {
 
-  // TODO: working here
-  // sendLoginForm = (username, password) => {
-  //   console.log(username)
-  //   console.log(password)
-  // }
+  authUser = (username, password) => {
+    const result = (username === password) ? true : false
+    return result
+  }
 
   render() {
     return (
@@ -20,7 +19,7 @@ export default class Login extends Component {
               password: ''
             }}
             // validation fields
-            validate={values => {
+            validate={ (values) => {
               let errors = {}
               if (!values.username) {
                 errors.username = 'Username is required'
@@ -31,22 +30,21 @@ export default class Login extends Component {
             }}
             onSubmit={async (values, actions) => {
               actions.setStatus({
-                success: 'Login...',
+                success: 'Trying to login...',
                 css: 'success'
               })
               actions.setSubmitting(false)
-              try {
-                const response = api.post('/auth/login', {
-                  username: values.username,
-                  password: values.password
-                })
-                // login(response.data.token)
-                this.props.history.push('/')
-              } catch (err) {
+              const response = this.authUser(values.username, values.password)
+              if (response) {
                 actions.setStatus({
-                  success: 'Username or Password incorrect !',
-                  css: 'error'
+                  success: 'Credentials are correct !',
+                  css: 'success'
                 })
+              } else {
+                  actions.setStatus({
+                    success: 'Username or Password incorrect !',
+                    css: 'error'
+                  })
               }
             }}
             render={formikForm => (
